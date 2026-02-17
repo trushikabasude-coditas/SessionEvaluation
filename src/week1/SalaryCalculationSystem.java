@@ -3,7 +3,7 @@ package week1;
 import java.util.Scanner;
 
 public class SalaryCalculationSystem {
-
+//one abstarct method tohave the common behavior
     public static abstract class Employee {
         String name;
         double baseSalary;
@@ -17,7 +17,7 @@ public class SalaryCalculationSystem {
             this.attendanceDays = attendanceDays;
             this.rating = rating;
         }
-
+//one abstarct method
         abstract double calculateGrossSalary();
 
         public double calculateAttDeduction() {
@@ -29,11 +29,20 @@ public class SalaryCalculationSystem {
         public double performanceBonusCalculation() {
             double bonusPercent;
             switch (rating) {
-                case 5: bonusPercent = 0.20; break;
-                case 4: bonusPercent = 0.15; break;
-                case 3: bonusPercent = 0.10; break;
-                case 2: bonusPercent = 0.05; break;
-                default: bonusPercent = 0.0;
+                case 5:
+                    bonusPercent = 0.20;
+                    break;
+                case 4:
+                    bonusPercent = 0.15;
+                    break;
+                case 3:
+                    bonusPercent = 0.10;
+                    break;
+                case 2:
+                    bonusPercent = 0.05;
+                    break;
+                default:
+                    bonusPercent = 0.0;
             }
             return calculateGrossSalary() * bonusPercent;
         }
@@ -66,14 +75,13 @@ public class SalaryCalculationSystem {
         Scanner sc = new Scanner(System.in);
         Employee employee;
 
-        System.out.println("Select Employee Type:");
-        System.out.println("1. Developer");
-        System.out.println("2. Manager");
-        System.out.println("3. Intern");
-
-        int choice = sc.nextInt();
+        System.out.println("Select Employee:");
+        System.out.println("1 Developer");
+        System.out.println("2 Manager");
+        System.out.println("3 Intern");
+        int choice = sc.nextInt();//if click 1 then you are developer 2 manager 3 intern
         sc.nextLine();
-
+        //takjing user inputs for name slaary attendance ratings
         System.out.print("Enter Name: ");
         String name = sc.nextLine();
 
@@ -85,6 +93,8 @@ public class SalaryCalculationSystem {
 
         System.out.print("Enter Rating (1-5): ");
         int rating = sc.nextInt();
+
+
 
         switch (choice) {
             case 1:
@@ -104,10 +114,10 @@ public class SalaryCalculationSystem {
                 break;
 
             default:
-                System.out.println("Invalid Choice");
+                System.out.println("Enter the valid role...!!!");
                 return;
         }
 
-        System.out.println("Net Salary: " + employee.calculateNetSalary());
+        System.out.println("Your Net Salary is: " + employee.calculateNetSalary());
     }
 }
